@@ -19,13 +19,14 @@ export default class NoOp extends Playback {
   }
 
   render() {
-    const playbackNotSupported = this.options.playbackNotSupportedMessage || this.i18n.t('playback_not_supported')
-    this.$el.html(this.template({ message: playbackNotSupported }))
-    this.trigger(Events.PLAYBACK_READY, this.name)
-    const showForNoOp = !!(this.options.poster && this.options.poster.showForNoOp)
-    if (this.options.autoPlay || !showForNoOp)
-      this._animate()
-
+    if (this.options.source) {
+      const playbackNotSupported = this.options.playbackNotSupportedMessage || this.i18n.t('playback_not_supported')
+      this.$el.html(this.template({ message: playbackNotSupported }))
+      this.trigger(Events.PLAYBACK_READY, this.name)
+      const showForNoOp = !!(this.options.poster && this.options.poster.showForNoOp)
+      if (this.options.autoPlay || !showForNoOp)
+        this._animate()
+    }
     return this
   }
 
