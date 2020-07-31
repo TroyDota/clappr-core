@@ -232,7 +232,7 @@ export default class HTML5Video extends Playback {
     if (this.getPlaybackType() === Playback.VOD || this.getPlaybackType() === Playback.AOD)
       this.settings.left = ['playpause', 'position', 'duration']
     else
-      this.settings.left = ['playstop']
+      this.settings.left = ['playpause']
 
     this.settings.seekEnabled = this.isSeekEnabled()
     this.trigger(Events.PLAYBACK_SETTINGSUPDATE)
